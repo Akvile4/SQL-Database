@@ -1,7 +1,7 @@
 const sequelize = require('../db/connection');
 const { DataTypes } = require('sequelize');
 
-const Film = sequelize.define('Netfix', {
+const Film = sequelize.define('Series', {
     name: {
         type : DataTypes.STRING,
         allowNull : false
@@ -9,6 +9,13 @@ const Film = sequelize.define('Netfix', {
     actor: {
         type : DataTypes.STRING,
         allowNull : false
+    },
+    year: {
+        type : DataTypes.INTEGER,
+    },
+    season: {
+        type : DataTypes.INTEGER,
+        allowNull : false,
     }
 })
 

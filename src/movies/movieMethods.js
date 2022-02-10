@@ -14,6 +14,7 @@ exports.addFilm = async (filmObj) => {
 	}
 };
 
+	// shows everything in the database
 exports.list = async () => {
 	try {
 		const listOfMovies = await Film.findAll();
@@ -45,6 +46,20 @@ exports.deleteOne = async () => {
 			}
 		})
 		console.log('destroyed');
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+	// deletes everything from the database
+exports.deleteAll = async () => {
+	try {
+		await Film.destroy(
+			{
+				truncate : true
+			}
+		)
+		console.log('everything is destroyed!!!')
 	} catch (error) {
 		console.log(error)
 	}
