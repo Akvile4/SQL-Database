@@ -1,6 +1,6 @@
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
-const { addFilm, list } = require('./movies/movieMethods');
+const { addFilm, list, update, deleteOne } = require('./movies/movieMethods');
 const argv = yargs(hideBin(process.argv)).argv;
 
 const app  = async () => {
@@ -13,6 +13,12 @@ const app  = async () => {
     }
     else if (argv.list) {
         await list()
+    }
+    else if (argv.update) {
+        await update()
+    }
+    else if (argv.delete) {
+        await deleteOne()
     }
     else {
         console.log('wrong command')
