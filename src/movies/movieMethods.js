@@ -59,20 +59,48 @@ exports.find = async () => {
 			})
 			console.log(findThis);
 		}
+		else {
+			console.log('Nothing to find!')
+		}
 	} catch (error) {
 		console.log(error)
 	}
 }
-
+	// updates all with certain data 
 exports.update = async () => {
 	try {
-		await Film.update( {name: argv.newTitle}, {
-				
+		if (argv.newTitle) {
+			await Film.update( {name: argv.newTitle}, {
+					
+					where: {
+						name: argv.title,
+					}
+			});
+		}
+		else if (argv.newActor) {
+			await Film.update( {actor: argv.newActor}, {
 				where: {
-					name: argv.title,
-				},
-		});
-		console.log("updated");
+					actor: argv.actor
+				}
+			})
+		}
+		else if (argv.newYear) {
+			await Film.update( {year: argv.newYear}, {
+				where: {
+					year: argv.year
+				}
+			})
+		}
+		else if (argv.newSeason) {
+			await Film.update( {season: argv.newSeason}, {
+				where: {
+					season: argv.season
+				}
+			})
+		}
+		else {
+			console.log("update error");
+		}
 	} catch (error) {
 		console.log(error);
 	}
