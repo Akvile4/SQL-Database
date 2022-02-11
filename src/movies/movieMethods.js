@@ -24,6 +24,46 @@ exports.list = async () => {
 	}
 };
 
+	// find everything with specific data
+exports.find = async () => {
+	try {
+		if (argv.title) {
+			const findThis = await Film.findAll({
+				where: {
+					name: argv.title
+				}
+			})
+			console.log(findThis);
+		}
+		else if (argv.actor) {
+			const findThis = await Film.findAll({
+				where: {
+					actor: argv.actor
+				}
+			})
+			console.log(findThis);
+		}
+		else if (argv.year) {
+			const findThis = await Film.findAll({
+				where: {
+					year: argv.year
+				}
+			})
+			console.log(findThis);
+		}
+		else if (argv.season) {
+			const findThis = await Film.findAll({
+				where: {
+					season: argv.season
+				}
+			})
+			console.log(findThis);
+		}
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 exports.update = async () => {
 	try {
 		await Film.update( {name: argv.newTitle}, {
