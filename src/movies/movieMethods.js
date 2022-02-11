@@ -106,14 +106,40 @@ exports.update = async () => {
 	}
 };
 
+	// deletes everything that matches data
 exports.deleteOne = async () => {
 	try {
-		await Film.destroy( {
-			where: {
-				name: argv.title
-			}
-		})
-		console.log('destroyed');
+		if (argv.title) {
+			await Film.destroy( {
+				where: {
+					name: argv.title
+				}
+			})
+		}
+		else if (argv.actor) {
+			await Film.destroy({
+				where: {
+					actor: argv.actor
+				}
+			})
+		}
+		else if (argv.year) {
+			await Film.destroy({
+				where: {
+					year: argv.year
+				}
+			})
+		}
+		else if (argv.season) {
+			await Film.destroy({
+				where: {
+					season: argv.season
+				}
+			})
+		}
+		else {
+			console.log('deleted some data');
+		}
 	} catch (error) {
 		console.log(error)
 	}
